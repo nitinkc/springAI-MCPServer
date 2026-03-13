@@ -1,0 +1,49 @@
+# Compiled class files
+*.class
+
+# Log files
+*.log
+logs/
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# Maven target directory
+/target/
+
+# Generated sources
+/generated-sources/
+
+# Eclipse, IntelliJ, NetBeans and VS Code files
+/.classpath
+/.project
+/.settings/
+/.idea/
+*.iml
+*.ipr
+.vscode/
+
+# OS files
+.DS_Store
+
+# Temporary files
+tmp/
+temp/
+
+# Environment variables
+.env
+
+# Build directories
+/out/
+/build/
+/dist/
+
+# Misc
+coverage/
+
+# Avoid ignoring the maven wrapper files; keep mvnw and .mvn in repo
+# If you want to ignore maven wrapper jar, uncomment below
+# .mvn/wrapper/maven-wrapper.jar
+

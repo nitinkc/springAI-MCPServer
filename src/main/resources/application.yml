@@ -1,0 +1,83 @@
+spring:
+  application:
+    name: spring-ai-mcp-server
+
+  # H2 Database Configuration (Demo)
+  datasource:
+    url: jdbc:h2:mem:mcpdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  # Initialize database with sample data
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+
+  security:
+    debug: true
+
+  ai:
+    mcp:
+      server:
+        enabled: true
+        transport: sse
+        base-path: /mcp
+
+# MCP Server Configuration
+mcp:
+  # Workspace for Git operations (cloned repos go here)
+  workspace:
+    path: ./workspace
+  # Test execution timeout
+  test:
+    timeout-minutes: 10
+  # General command execution timeout
+  command:
+    timeout-minutes: 10
+
+# GitHub Configuration
+github:
+  # Personal Access Token - set via environment variable GITHUB_TOKEN
+  token: ${GITHUB_TOKEN:}
+  api-url: https://api.github.com
+
+# Server Configuration
+server:
+  port: 8080
+
+# Actuator & Observability
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,mappings
+  endpoint:
+    health:
+      show-details: when_authorized
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.example.mcpserver: DEBUG
+    org.springframework.ai.mcp: DEBUG
+    org.springframework.security: DEBUG
