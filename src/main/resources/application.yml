@@ -39,6 +39,9 @@ spring:
         transport: sse
         base-path: /mcp
 
+  main:
+    allow-bean-definition-overriding: true
+
 # MCP Server Configuration
 mcp:
   # Workspace for Git operations (cloned repos go here)
@@ -81,3 +84,4 @@ logging:
     com.example.mcpserver: DEBUG
     org.springframework.ai.mcp: DEBUG
     org.springframework.security: DEBUG
+
