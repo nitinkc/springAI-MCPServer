@@ -47,3 +47,6 @@ coverage/
 # If you want to ignore maven wrapper jar, uncomment below
 # .mvn/wrapper/maven-wrapper.jar
 
+test-repos/
+
+*__pycache__/
